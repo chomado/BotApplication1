@@ -3,8 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:BotClientAppXamarin"
              x:Class="BotClientAppXamarin.MainPage">
-
-    <Button Text="Click me"
+    <ContentPage.Padding>
+        <OnPlatform x:TypeArguments="Thickness" iOS="0,20,0,0" />
+    </ContentPage.Padding>
+    <StackLayout>
+        
+        <Entry x:Name="inputForm" />
+        <Button Text="Click me"
             Clicked="Click" />
+
+        <ListView x:Name="chatList"
+                  VerticalOptions="FillAndExpand" />
+    </StackLayout>
 
 </ContentPage>

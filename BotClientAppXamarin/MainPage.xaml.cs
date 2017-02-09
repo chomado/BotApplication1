@@ -31,7 +31,7 @@ namespace BotClientAppXamarin
 
             message.From = new ChannelAccount { Id = "chomado" };
 
-            message.Text = "chomado text";
+            message.Text = inputForm.Text;
 
             // send message
             var response = await client.Conversations.PostActivityAsync(conversation.ConversationId, message);
@@ -43,6 +43,8 @@ namespace BotClientAppXamarin
             {
                 Debug.WriteLine(returnedMessage.Text);
             }
+
+            chatList.ItemsSource = returnedMessages.Activities.Select(i => i.Text);
         }
     }
 }
