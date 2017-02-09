@@ -13,6 +13,8 @@ namespace BotClientAppXamarin
     {
         private Conversation conversation;
 
+        private DirectLineClient client = new DirectLineClient("STorKRaOUnA.cwA.yJM.hD0kN9beuFy7gQ9ROibb2DFTqbsGRIwfZY49Cqb0Hlg");
+
         public MainPage()
         {
             InitializeComponent();
@@ -20,8 +22,6 @@ namespace BotClientAppXamarin
 
         private async void Click(object o, EventArgs e)
         {
-            var client = new DirectLineClient("STorKRaOUnA.cwA.yJM.hD0kN9beuFy7gQ9ROibb2DFTqbsGRIwfZY49Cqb0Hlg");
-
             if (conversation == null)
             {
                 conversation = await client.Conversations.StartConversationAsync();
@@ -45,6 +45,7 @@ namespace BotClientAppXamarin
             }
 
             chatList.ItemsSource = returnedMessages.Activities.Select(i => i.Text);
+            inputForm.Text = "";
         }
     }
 }
