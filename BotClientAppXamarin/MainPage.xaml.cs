@@ -44,8 +44,15 @@ namespace BotClientAppXamarin
                 Debug.WriteLine(returnedMessage.Text);
             }
 
-            chatList.ItemsSource = returnedMessages.Activities.Select(i => i.Text);
+            chatList.ItemsSource = returnedMessages.Activities.Select(i => i.Text)
+                .Select((x, i) => new Message { Text = x, Color = (i % 2 == 0 ? "Blue" : "Red") });
             inputForm.Text = "";
         }
+    }
+
+    public class Message
+    {
+        public string Text { get; set; }
+        public string Color { get; set; }
     }
 }

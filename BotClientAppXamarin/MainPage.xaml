@@ -13,7 +13,13 @@
             Clicked="Click" />
 
         <ListView x:Name="chatList"
-                  VerticalOptions="FillAndExpand" />
+                  VerticalOptions="FillAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Text}" TextColor="{Binding Color}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackLayout>
 
 </ContentPage>
