@@ -4,8 +4,7 @@
              xmlns:local="clr-namespace:BotClientAppXamarin"
              x:Class="BotClientAppXamarin.MainPage">
 
-	<Label Text="Welcome to Xamarin Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+    <Button Text="Click me"
+            Clicked="Click" />
 
 </ContentPage>
