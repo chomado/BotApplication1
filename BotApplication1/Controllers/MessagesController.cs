@@ -22,11 +22,11 @@ namespace BotApplication1
             if (activity.Type == ActivityTypes.Message)
             {
                 ConnectorClient connector = new ConnectorClient(new Uri(activity.ServiceUrl));
-                // calculate something for us to return
-                int length = (activity.Text ?? string.Empty).Length;
+
+                var recievedMessage = activity.Text ?? string.Empty;
 
                 // return our reply to the user
-                Activity reply = activity.CreateReply($"You sent {activity.Text} which was {length} characters");
+                Activity reply = activity.CreateReply(ReplyMessage(recievedMessage));
                 await connector.Conversations.ReplyToActivityAsync(reply);
             }
             else
@@ -35,6 +35,25 @@ namespace BotApplication1
             }
             var response = Request.CreateResponse(HttpStatusCode.OK);
             return response;
+        }
+
+        private string ReplyMessage(string recievedMessage)
+        {
+
+            if (recievedMessage.Contains("ちょまど"))
+            {
+                return "千代田まどか!";
+            }
+            else if (recievedMessage.Contains("天気"))
+            {
+                return "曇り時々晴れ";
+            }
+            else if (recievedMessage.Contains("住まい"))
+            {
+                return "SUUMO";
+            }
+            return $"You sent {recievedMessage} which was {recievedMessage.Length} characters";
+
         }
 
         private Activity HandleSystemMessage(Activity message)
